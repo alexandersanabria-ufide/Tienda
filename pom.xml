@@ -104,6 +104,12 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         
+         <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>9.5.0</version>
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -147,6 +153,11 @@
                         </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Xlint</arg>
+                    </compilerArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>
