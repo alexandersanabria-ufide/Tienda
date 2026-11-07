@@ -69,7 +69,32 @@
             <div th:replace="~{consultas/fragmentos :: formConsulta('primary',#{consultas.derivadas},'/consultas/consultaDerivada')}"/>
             <div th:replace="~{consultas/fragmentos :: formConsulta('warning',#{consultas.jpql},'/consultas/consultaJPQL')}"/>
             <div th:replace="~{consultas/fragmentos :: formConsulta('success',#{consultas.sql},'/consultas/consultaSQL')}"/>
-            <div class='card'><p>Acá va su Práctica #2</p></div>
+            <div>
+                <form method="post" th:action='@{/consultas/consultaAmpliada}' class='was-validated'>
+                    <div class='card p-2'>
+                        <div class="card-header text-center text-white bg-danger">
+                            <h5>[[#{consultas.ampliada}]]</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class='mb-3'>
+                                <label>[[#{consultas.existencias.inferior}]]</label>
+                                <input type="number" name='existenciasInf' th:value='${existenciasInf}'
+                                       class='form-control' min="0" required/>
+                            </div>
+                            <div class='mb-3'>
+                                <label>[[#{consultas.existencias.superior}]]</label>
+                                <input type="number" name='existenciasSup' th:value='${existenciasSup}'
+                                       class='form-control' min="0" required/>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type='submit' class='btn text-white btn-danger'>
+                                <i class='fa-solid fa-magnifying-glass'></i> [[#{consultas.ampliada}]]
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
 
         <div th:fragment='formConsulta(colorForm, textoForm, urlForm)'>
